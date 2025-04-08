@@ -4,12 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
-  FolderKanban,
-  Database,
-  BarChart,
   FileText,
+  BarChart3,
   Settings,
   HelpCircle,
+  Upload,
 } from "lucide-react";
 
 export default function SideNavbar() {
@@ -22,24 +21,19 @@ export default function SideNavbar() {
       label: "Dashboard",
     },
     {
-      href: "/projects",
-      icon: FolderKanban,
-      label: "Projects",
+      href: "/files",
+      icon: FileText,
+      label: "Files",
     },
     {
-      href: "/library",
-      icon: Database,
-      label: "Data",
+      href: "/insights",
+      icon: BarChart3,
+      label: "Insights",
     },
     {
       href: "/reports",
-      icon: BarChart,
+      icon: Upload,
       label: "Reports",
-    },
-    {
-      href: "/documents",
-      icon: FileText,
-      label: "Documents",
     },
     {
       href: "/settings",
@@ -54,7 +48,7 @@ export default function SideNavbar() {
   ];
 
   return (
-    <div className="fixed top-16 h-[calc(100vh-4rem)] w-[64px] flex-col border-r bg-background">
+    <div className="fixed top-16 h-[calc(100vh-4rem)] w-fit flex-col border-r bg-background">
       <div className="flex h-full flex-col">
         <div className="flex-1 overflow-y-auto py-3 px-2">
           <nav className="flex flex-col gap-4">

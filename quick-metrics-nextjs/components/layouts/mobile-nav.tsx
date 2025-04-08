@@ -13,15 +13,14 @@ import {
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import {
   LayoutDashboard,
-  FolderKanban,
-  Database,
-  BarChart,
+  FileText,
+  BarChart3,
   Menu,
   LogOut,
   CreditCard,
   Settings,
   HelpCircle,
-  FileText,
+  Upload,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -29,15 +28,12 @@ export default function MobileNav() {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
-  // Handle navigation item click
   const handleNavClick = () => {
     setIsSheetOpen(false);
   };
 
-  // Handle sign out
   const handleSignOut = async () => {
-    // This will be implemented when authentication is set up
-    window.location.href = "/sign-in";
+    window.location.href = "/login";
   };
 
   const mainNavItems = [
@@ -47,20 +43,19 @@ export default function MobileNav() {
       label: "Dashboard",
     },
     {
-      href: "/projects",
-      icon: FolderKanban,
-      label: "Projects",
+      href: "/files",
+      icon: FileText,
+      label: "Files",
     },
     {
-      href: "/library",
-      icon: Database,
-      label: "Data",
+      href: "/insights",
+      icon: BarChart3,
+      label: "Insights",
     },
   ];
 
   return (
     <>
-      {/* Fixed bottom navigation bar */}
       <div className="fixed bottom-0 left-0 z-30 flex w-full justify-around border-t bg-background p-2">
         {mainNavItems.map((item) => (
           <NavButton
@@ -99,23 +94,12 @@ export default function MobileNav() {
                   Business Tools
                 </h3>
 
-                {/* Reports */}
                 <MenuItem
                   href="/reports"
-                  icon={BarChart}
-                  title="Analytics & Reports"
-                  description="View business insights and trends"
+                  icon={Upload}
+                  title="Reports"
+                  description="View and manage your reports"
                   isActive={pathname.startsWith("/reports")}
-                  onClick={handleNavClick}
-                />
-
-                {/* Documents */}
-                <MenuItem
-                  href="/documents"
-                  icon={FileText}
-                  title="Documentation"
-                  description="Access guides and help documents"
-                  isActive={pathname.startsWith("/documents")}
                   onClick={handleNavClick}
                 />
               </div>
@@ -125,7 +109,6 @@ export default function MobileNav() {
                   Account
                 </h3>
 
-                {/* Settings */}
                 <MenuItem
                   href="/settings"
                   icon={Settings}
@@ -135,7 +118,6 @@ export default function MobileNav() {
                   onClick={handleNavClick}
                 />
 
-                {/* Help */}
                 <MenuItem
                   href="/help"
                   icon={HelpCircle}
@@ -146,7 +128,6 @@ export default function MobileNav() {
                 />
               </div>
 
-              {/* Upgrade to Pro */}
               <div className="mt-4 rounded-xl bg-primary/5 p-4 border border-primary/20">
                 <div className="flex items-start">
                   <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
@@ -172,7 +153,6 @@ export default function MobileNav() {
               </div>
 
               <div className="mt-6">
-                {/* Sign Out */}
                 <button
                   onClick={() => {
                     handleNavClick();
